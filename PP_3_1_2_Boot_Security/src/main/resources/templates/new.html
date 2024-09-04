@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add New User</title>
+</head>
+<body>
+<h1>Add New User</h1>
+<form th:action="@{/admin/save}" th:object="${user}" method="post">
+  <label>Name:</label>
+  <input type="text" th:field="*{name}" /><br/>
+  <label>Email:</label>
+  <input type="text" th:field="*{email}" /><br/>
+  <label>Password:</label>
+  <input type="text" th:field="*{password}" /><br/>
+  <button type="submit">Save</button>
+</form>
+<th:block th:if="${#httpServletRequest.remoteUser != null}">
+  <p>Welcome, <span th:text="${#httpServletRequest.remoteUser}">User</span>!</p>
+  <a href="#" th:href="@{/logout}" th:text="#{logout}">Logout</a>
+</th:block>
+</body>
+</html>

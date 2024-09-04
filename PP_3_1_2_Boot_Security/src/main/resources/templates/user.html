@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User info</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+
+    </tr>
+
+    <tr th:object="${user}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+
+    </tr>
+</table>
+<th:block th:if="${#httpServletRequest.remoteUser != null}">
+    <p>Welcome, <span th:text="${#httpServletRequest.remoteUser}">User</span>!</p>
+    <a href="#" th:href="@{/logout}" th:text="#{logout}">Logout</a>
+</th:block>
+</body>
+</html>
